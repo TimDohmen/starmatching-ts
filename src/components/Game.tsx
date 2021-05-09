@@ -88,9 +88,15 @@ const Game = ({ startNewGame }: Props) => {
         </div>
       <div className="body">
         <div className="left">
-          <button onClick={startNewGame()}>Play Again</button>
+          {/* <PlayAgain onClick={startNewGame()} gameStatus={gameStatus} /> */}
+          {/* <button onClick={startNewGame()}>Play Again</button> */}
           {gameStatus !== 'active' ?
-            <PlayAgain onClick={startNewGame()} gameStatus={gameStatus} /> :
+            <div className="game-done">
+              <div className="message" style={{ color: gameStatus === 'lost' ? 'red' : 'green' }}>
+                {gameStatus === 'lost' ? 'Game Over' : 'Very Nice'}
+              </div>
+              <button onClick={startNewGame()}>Play Again</button>
+            </div> :
             <StarsDisplay count={stars} />
           }
         </div>

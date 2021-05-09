@@ -5,28 +5,26 @@ import './StarMatch.css'
 
 
 
-// const StarMatch = () => {
 
-//   const startGame = () => {
-//     setGameId(gameId + 1)
-//   }
-//   const [gameId, setGameId] = useState(1)
-//   return <Game key={gameId} startNewGame={() => startGame} />
-// }
 
-class StarMatch extends React.Component {
+
+
+class StarMatch extends React.Component<{}, any> {
   constructor(props: any) {
     super(props);
-
+    this.state = {
+      gameId: 1
+    }
   }
+
   // const [gameId, setGameId] = useState(1)
 
   startGame = () => {
-    console.log('starting')
+    this.setState({ gameId: this.state.gameId + 1 })
   }
 
   render() {
-    return (<Game key={1} startNewGame={() => this.startGame} />
+    return (<Game key={this.state.gameId} startNewGame={() => this.startGame} />
     )
   }
 
